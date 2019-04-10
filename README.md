@@ -11,10 +11,7 @@ Materialize
 
 This application is our first full stack application with a front end implemented with HTML and CSS elements from Materialize framework and the backend handled with Node.js and Express. We used handlebars to template our HTML. 
 
-The user arrives to the page and is able to perform a few operations:
-* add a cookie (CREATE)
-* eat a cookie (UPDATE)
-* hide the evidence (DELETE)
+The user arrives to the page and is able to perform the operations that will satisfy RESTful principles that were required for this assignment. 
 
 ## Satisfying RESTful principles (Create, Read, Update, Destroy):
 
