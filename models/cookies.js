@@ -1,8 +1,7 @@
 // dependencies, import ORM for functions to interact with db
-// let express = require("express");
-// object relation mapping/mapper
 let orm = require("../config/orm.js");
 
+// cookie CRUD operations
 let cookie = {
   selectAll: function(cb) {
     orm.all("cookies", function(result) {
@@ -21,12 +20,6 @@ let cookie = {
       cb(result);
     });
   },
-  bakeCookie: function(id, cb) {
-    console.log("ID COOKIE: " + id);
-    orm.update2(id, function(result) {
-      cb(result);
-    });
-  },
   deleteCookie: function(id, cb) {
     console.log("ID COOKIE: " + id);
     orm.delete(id, function(result) {
@@ -35,4 +28,5 @@ let cookie = {
   }
 };
 
+// export cookie
 module.exports = cookie;

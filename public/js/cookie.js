@@ -1,6 +1,7 @@
-// Make sure we wait to attach our handlers until the DOM is fully loaded.
+// make sure we wait to attach our handlers until the DOM is fully loaded
 $(function() {
   $(".change-crumbled").on("click", function(event) {
+    event.preventDefault();
     let id = $(this).data("id");
     let newCrumbled = $(this).data("newcrumbled");
 
@@ -8,7 +9,7 @@ $(function() {
       crumbled: newCrumbled
     };
 
-    // Send the PUT request.
+    // send the PUT request
     $.ajax("/api/cookies/" + id, {
       type: "PUT",
       data: newCrumbledState
@@ -20,37 +21,35 @@ $(function() {
   });
 
   $(".create-form").on("submit", function(event) {
-    // Make sure to preventDefault on a submit event.
+    // make sure to preventDefault on a submit event
     event.preventDefault();
-
     var newCookie = {
       cookie_flavor: $("#ca")
         .val()
         .trim()
     };
-
     console.log(newCookie);
 
-    // Send the POST request.
+    // send the POST request
     $.ajax("/api/cookies", {
       type: "POST",
       data: newCookie
     }).then(function() {
       console.log("added new cookie");
-      // Reload the page to get the updated list
+      // reload the page to get the updated list
       location.reload();
     });
   });
 
   $(".delete-cookie").on("click", function(event) {
+    event.preventDefault();
     var id = $(this).data("id");
-
-    // Send the DELETE request.
+    // send the DELETE request
     $.ajax("/api/cookies/" + id, {
       type: "DELETE"
     }).then(function() {
       console.log("deleted cookie", id);
-      // Reload the page to get the updated list
+      // reload the page to get the updated list
       location.reload();
     });
   });

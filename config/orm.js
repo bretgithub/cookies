@@ -1,5 +1,7 @@
+// dependency
 let connection = require("./connection.js");
 
+// helper functions not needed as they are not being called anymore, lines 4 - 31
 function printQuestionMarks(num) {
   let arr = [];
   for (let i = 0; i < num; i++) {
@@ -8,7 +10,7 @@ function printQuestionMarks(num) {
   return arr.toString();
 }
 
-// Helper function to convert object key/value pairs to SQL syntax
+// helper function to convert object key/value pairs to SQL syntax
 function objToSql(ob) {
   let arr = [];
   // loop through the keys and push the key/value as a string int arr
@@ -28,6 +30,7 @@ function objToSql(ob) {
   return arr.toString();
 }
 
+// hitting the db with CRUD operations
 let orm = {
   all: function(tableInput, cb) {
     let queryString = "SELECT * FROM ??";
@@ -42,7 +45,7 @@ let orm = {
   create: function(name, cb) {
     console.log("orm" + name);
     connection.query(
-      `INSERT INTO cookies (cookie_flavor) VALUES (?)`,
+      "INSERT INTO cookies (cookie_flavor) VALUES (?)",
       [name],
       function(err, result) {
         if (err) {
@@ -61,21 +64,6 @@ let orm = {
         if (err) {
           throw err;
         }
-
-        cb(result);
-      }
-    );
-  },
-
-  update2: function(id, cb) {
-    connection.query(
-      "UPDATE cookies SET ? WHERE ?",
-      [{ crumbled: false }, { id: id }],
-      function(err, result) {
-        if (err) {
-          throw err;
-        }
-
         cb(result);
       }
     );
@@ -95,24 +83,5 @@ let orm = {
   }
 };
 
+// export orm
 module.exports = orm;
-
-// create: function(table, cols, vals, cb) {
-//     let queryString = "INSERT INTO " + table;
-
-//     queryString += " (";
-//     queryString += cols.toString();
-//     queryString += ") ";
-//     queryString += "VALUES (";
-//     queryString += printQuestionMarks(vals.length);
-//     queryString += ") ";
-
-//     console.log(queryString);
-
-//     connection.query(queryString, vals, function(err, result) {
-//       if (err) {
-//         throw err;
-//       }
-//       cb(result);
-//     });
-//   },

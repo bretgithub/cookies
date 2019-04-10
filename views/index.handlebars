@@ -1,16 +1,19 @@
+{{!-- nav bar --}}
 <nav>
     <div class="nav-wrapper purple lighten-2">
         <div class="container">
             <div class="row">
                 <div class="col l6 s12">
-                    <!-- icon -->
+                    {{!-- icon --}}
                     <i class="fa fa-id-badge fa-4x" aria-hidden="true" id="logo-icon"></i>
-                    <!-- link back to root -->
+                    {{!-- link back to root --}}
                     <a href="/" class="brand-logo" id="logo">&nbsp; Cookie counter, not calories</a>
                 </div>
+                {{!-- static links --}}
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
-                    <li><a href="#">GitHub</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="https://github.com/bretgithub/cookies">GitHub</a></li>
+                    <li><a href="mailto:bret.allan@gmail.com?Subject=WOW!%20Hire%20me%20as%20a%20developer,%20mobile%20@415-465-3544"
+                            target="_top">Contact</a></li>
                     <li><a href="#">About</a></li>
                 </ul>
 
@@ -18,7 +21,9 @@
         </div>
     </div>
 </nav>
+{{!-- /nav bar --}}
 
+{{!-- main content --}}
 <div class="row">
     <div class="col s12 m6 offset-m3">
         <div class="card">
@@ -29,47 +34,52 @@
                 <p>To run this app, enter a cookie flavor below that you'd like to bake, after clicking the button 'Add
                     cookie' the cookie will then appear in the tab 'COOKIES TO EAT'</p>
                 <br>
-                <p>After adding a cookie, you can choose to eat the cookie then toggle to the 'COOKIES YOU ATE' tab, on
-                    either tab you can also destroy the evidence by clicking the appropriate button.</p>
+                <p>After adding a cookie, you can choose to eat the cookie or destroy the evidence, at any time you can
+                    toggle to the 'COOKIES YOU ATE' tab to see cookies taht have been eaten.
+                </p>
                 <br>
-                <p>There is a known bug where if you click the button 'HIDE THE EVIDENCE!' on the 'COOKIES YOU ATE' tab
-                    the page will reload and return you to the 'COOKIES TO EAT' tab instead of keeping you on the tab
-                    you are focused</p>
+                <p>There is a known bug where the page has to reload to show the CREATE, UDPDATE, or DELETE operations
+                    and therefore returns a choppy interface to the user when clicking on a button to initiate said
+                    operation.</p>
                 <br>
                 <hr>
+                {{!-- CREATE operation, add a cookie --}}
                 <h5>Add a cookie</h5>
                 <form class="create-form">
-
                     <div class="form-group">
                         <label for="ca">Cookie flavor:</label>
                         <input type="text" id="ca" name="name">
                     </div>
-
                     <button type="submit">Add cookie</button>
                 </form>
             </div>
+            {{!-- additions to the database, CREATED and UPDATED "eaten" --}}
             <div class="card-tabs">
                 <ul class="tabs tabs-fixed-width text-white">
                     <li class="tab"><a href="#test4">Cookies to eat</a></li>
                     <li class="tab"><a href="#test5">Cookies you ate</a></li>
                 </ul>
             </div>
+            {{!-- CREATED cookies --}}
             <div class="card-content purple lighten-5">
                 <div id="test4">
                     <ul>
                         {{#each cookies}}
                         {{#unless crumbled}}
                         {{cookie_flavor}}
+                        {{!-- handled in cookie-block.handlebars --}}
                         {{> cookies/cookie-block crumbled=true}}
                         {{/unless}}
                         {{/each}}
                     </ul>
                 </div>
+                {{!-- UPDATED cookies, "eaten" --}}
                 <div id="test5">
                     <ul>
                         {{#each cookies}}
                         {{#if crumbled}}
                         {{cookie_flavor}}
+                        {{!-- handled in cookie-block.handlebars --}}
                         {{> cookies/cookie-block crumbled=false}}
                         {{/if}}
                         {{/each}}

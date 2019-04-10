@@ -1,7 +1,9 @@
+// dependencies
 let express = require("express");
 let router = express.Router();
 let cookies = require("../models/cookies");
 
+// routes
 router.get("/", function(req, res) {
   res.redirect("/cookies");
 });
@@ -29,14 +31,15 @@ router.put("/api/cookies/:id", function(req, res) {
     cookies.eatCookie(req.params.id, function(result) {
       res.send(result);
     });
-    if (req.body.crumbled === "false") {
-      console.log(req);
-      cookies.eatCookie(req.params.id, function(result) {
-        console.log(result);
-        res.send(result);
-      });
-    }
   }
+  //     if (req.body.crumbled === "false") {
+  //       console.log(req);
+  //       cookies.eatCookie(req.params.id, function(result) {
+  //         console.log(result);
+  //         res.send(result);
+  //       });
+  //     }
+  //   }
 });
 
 router.delete("/api/cookies/:id", function(req, res) {
@@ -45,4 +48,5 @@ router.delete("/api/cookies/:id", function(req, res) {
   });
 });
 
+// export router
 module.exports = router;
