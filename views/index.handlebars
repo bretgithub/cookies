@@ -1,0 +1,45 @@
+<nav>
+    <div class="nav-wrapper purple lighten-2">
+        <a href="#" class="brand-logo">Cookie Logo</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li><a href="#">GitHub</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">About</a></li>
+        </ul>
+    </div>
+</nav>
+
+<h1>Cookies</h1>
+
+<h2>Cookies to eat!</h2>
+
+<ul>
+    {{#each cookies}}
+    {{#unless crumbled}}
+    {{cookie_flavor}}
+    {{> cookies/cookie-block crumbled=true}}
+    {{/unless}}
+    {{/each}}
+</ul>
+
+<h2>Cookies to bake!</h2>
+
+<ul>
+    {{#each cookies}}
+    {{#if crumbled}}
+    {{cookie_flavor}}
+    {{> cookies/cookie-block crumbled=false}}
+    {{/if}}
+    {{/each}}
+</ul>
+
+<h2>Add a cookie</h2>
+<form class="create-form">
+
+    <div class="form-group">
+        <label for="ca">Cookie flavor:</label>
+        <input type="text" id="ca" name="name">
+    </div>
+
+    <button type="submit">Add cookie</button>
+</form>
