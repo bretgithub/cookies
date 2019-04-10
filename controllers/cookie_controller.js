@@ -25,15 +25,18 @@ router.post("/api/cookies", function(req, res) {
 });
 
 router.put("/api/cookies/:id", function(req, res) {
-  cookies.eatCookie(req.params.id, function(result) {
-    res.send(result);
-  });
-});
-
-router.put("/api/cookies/:id", function(req, res) {
-  cookies.bakeCookie(req.params.id, function(result) {
-    res.send(result);
-  });
+  if (req.body.crumbled === "true") {
+    cookies.eatCookie(req.params.id, function(result) {
+      res.send(result);
+    });
+    if (req.body.crumbled === "false") {
+      console.log(req);
+      cookies.eatCookie(req.params.id, function(result) {
+        console.log(result);
+        res.send(result);
+      });
+    }
+  }
 });
 
 router.delete("/api/cookies/:id", function(req, res) {

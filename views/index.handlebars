@@ -1,45 +1,81 @@
 <nav>
     <div class="nav-wrapper purple lighten-2">
-        <a href="#" class="brand-logo">Cookie Logo</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><a href="#">GitHub</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">About</a></li>
-        </ul>
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <!-- icon -->
+                    <i class="fa fa-id-badge fa-4x" aria-hidden="true" id="logo-icon"></i>
+                    <!-- link back to root -->
+                    <a href="/" class="brand-logo" id="logo">&nbsp; Cookie counter, not calories</a>
+                </div>
+                <ul id="nav-mobile" class="right hide-on-med-and-down">
+                    <li><a href="#">GitHub</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">About</a></li>
+                </ul>
+
+            </div>
+        </div>
     </div>
 </nav>
 
-<h1>Cookies</h1>
+<div class="row">
+    <div class="col s12 m6 offset-m3">
+        <div class="card">
+            <div class="card-content">
+                <img src="../assets/images/cookie.jpg" width="40px" id="cookie">
+                <p>Hi, welcome to the cookie counter. Here we will fulfill all your cookie wishes.</p>
+                <br>
+                <p>To run this app, enter a cookie flavor below that you'd like to bake, after clicking the button 'Add
+                    cookie' the cookie will then appear in the tab 'COOKIES TO EAT'</p>
+                <br>
+                <p>After adding a cookie, you can choose to eat the cookie then toggle to the 'COOKIES YOU ATE' tab, on
+                    either tab you can also destroy the evidence by clicking the appropriate button.</p>
+                <br>
+                <p>There is a known bug where if you click the button 'HIDE THE EVIDENCE!' on the 'COOKIES YOU ATE' tab
+                    the page will reload and return you to the 'COOKIES TO EAT' tab instead of keeping you on the tab
+                    you are focused</p>
+                <br>
+                <hr>
+                <h5>Add a cookie</h5>
+                <form class="create-form">
 
-<h2>Cookies to eat!</h2>
+                    <div class="form-group">
+                        <label for="ca">Cookie flavor:</label>
+                        <input type="text" id="ca" name="name">
+                    </div>
 
-<ul>
-    {{#each cookies}}
-    {{#unless crumbled}}
-    {{cookie_flavor}}
-    {{> cookies/cookie-block crumbled=true}}
-    {{/unless}}
-    {{/each}}
-</ul>
-
-<h2>Cookies to bake!</h2>
-
-<ul>
-    {{#each cookies}}
-    {{#if crumbled}}
-    {{cookie_flavor}}
-    {{> cookies/cookie-block crumbled=false}}
-    {{/if}}
-    {{/each}}
-</ul>
-
-<h2>Add a cookie</h2>
-<form class="create-form">
-
-    <div class="form-group">
-        <label for="ca">Cookie flavor:</label>
-        <input type="text" id="ca" name="name">
+                    <button type="submit">Add cookie</button>
+                </form>
+            </div>
+            <div class="card-tabs">
+                <ul class="tabs tabs-fixed-width text-white">
+                    <li class="tab"><a href="#test4">Cookies to eat</a></li>
+                    <li class="tab"><a href="#test5">Cookies you ate</a></li>
+                </ul>
+            </div>
+            <div class="card-content purple lighten-5">
+                <div id="test4">
+                    <ul>
+                        {{#each cookies}}
+                        {{#unless crumbled}}
+                        {{cookie_flavor}}
+                        {{> cookies/cookie-block crumbled=true}}
+                        {{/unless}}
+                        {{/each}}
+                    </ul>
+                </div>
+                <div id="test5">
+                    <ul>
+                        {{#each cookies}}
+                        {{#if crumbled}}
+                        {{cookie_flavor}}
+                        {{> cookies/cookie-block crumbled=false}}
+                        {{/if}}
+                        {{/each}}
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <button type="submit">Add cookie</button>
-</form>
+</div>
