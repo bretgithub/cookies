@@ -20,9 +20,9 @@ let cookie = {
       cb(result);
     });
   },
-  recycleCookie: function(id, cb) {
+  bakeAgain: function(id, cb) {
     console.log("ID COOKIE: " + id);
-    orm.recycle(id, function(result) {
+    orm.bake(id, function(result) {
       cb(result);
     });
   },

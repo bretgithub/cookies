@@ -32,20 +32,11 @@ router.put("/api/cookies/:id", function(req, res) {
   });
 });
 
-router.put("/api/recycle/:id", function(req, res) {
-  cookies.recycleCookie(req.params.id, function(result) {
+router.put("/api/bake-again/:id", function(req, res) {
+  cookies.bakeAgain(req.params.id, function(result) {
     res.send(result);
   });
 });
-
-//     if (req.body.crumbled === "false") {
-//       console.log(req);
-//       cookies.eatCookie(req.params.id, function(result) {
-//         console.log(result);
-//         res.send(result);
-//       });
-//     }
-//   }
 
 router.delete("/api/cookies/:id", function(req, res) {
   cookies.deleteCookie(req.params.id, function(result) {

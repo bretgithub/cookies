@@ -13,12 +13,12 @@ $(function() {
       type: "PUT",
       data: newCrumbledState
     }).then(function() {
-      // Reload the page to get the updated list
+      // reload the page to get the updated list
       location.reload();
     });
   });
 
-  $(".change-recycle").on("click", function(event) {
+  $(".change-bake").on("click", function(event) {
     event.preventDefault();
     let id = $(this).data("id");
 
@@ -27,17 +27,16 @@ $(function() {
     };
 
     // send the PUT request
-    $.ajax("/api/recycle/" + id, {
+    $.ajax("/api/bake-again/" + id, {
       type: "PUT",
       data: newCrumbledState
     }).then(function() {
-      // Reload the page to get the updated list
+      // reload the page to get the updated list
       location.reload();
     });
   });
 
   $(".create-form").on("submit", function(event) {
-    // make sure to preventDefault on a submit event
     event.preventDefault();
     var newCookie = {
       cookie_flavor: $("#ca")

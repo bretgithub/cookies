@@ -6,14 +6,13 @@
     <button class="change-crumbled" data-id="{{id}}" data-newcrumbled="{{crumbled}}">
         EAT ME!
     </button>
-
-    {{else}}
-    <button class="change-recycle" data-id="{{id}}" data-newcrumbled="{{crumbled}}">
-        RECYCLE!
-    </button>
-    {{/if}}
-
     <button class="delete-cookie" data-id="{{this.id}}">HIDE THE
         EVIDENCE!</button>
+
+    {{else}}
+    <button class="change-bake" data-id="{{id}}" data-newcrumbled="{{crumbled}}">
+        BAKE AGAIN!
+    </button>
+    {{/if}}
 </li>
 <br>

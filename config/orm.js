@@ -40,7 +40,7 @@ let orm = {
     );
   },
 
-  recycle: function(id, cb) {
+  bake: function(id, cb) {
     connection.query(
       "UPDATE cookies SET ? WHERE ?",
       [{ crumbled: false }, { id: id }],
