@@ -1,35 +1,6 @@
 // dependency
 let connection = require("./connection.js");
 
-// helper functions not needed as they are not being called anymore, lines 4 - 31
-function printQuestionMarks(num) {
-  let arr = [];
-  for (let i = 0; i < num; i++) {
-    arr.push("?");
-  }
-  return arr.toString();
-}
-
-// helper function to convert object key/value pairs to SQL syntax
-function objToSql(ob) {
-  let arr = [];
-  // loop through the keys and push the key/value as a string int arr
-  for (var key in ob) {
-    var value = ob[key];
-    // check to skip hidden properties
-    if (Object.hasOwnProperty.call(ob, key)) {
-      // if string with spaces, add quotations (Lana Del Grey => 'Lana Del Grey')
-      if (typeof value === "string" && value.indexOf(" ") >= 0) {
-        value = "'" + value + "'";
-      }
-      // e.g. {name: 'Lana Del Grey'} => ["name='Lana Del Grey'"]
-      // e.g. {sleepy: true} => ["sleepy=true"]
-      arr.push(key + "=" + value);
-    }
-  }
-  return arr.toString();
-}
-
 // hitting the db with CRUD operations
 let orm = {
   all: function(tableInput, cb) {
@@ -60,6 +31,19 @@ let orm = {
     connection.query(
       "UPDATE cookies SET ? WHERE ?",
       [{ crumbled: true }, { id: id }],
+      function(err, result) {
+        if (err) {
+          throw err;
+        }
+        cb(result);
+      }
+    );
+  },
+
+  recycle: function(id, cb) {
+    connection.query(
+      "UPDATE cookies SET ? WHERE ?",
+      [{ crumbled: false }, { id: id }],
       function(err, result) {
         if (err) {
           throw err;

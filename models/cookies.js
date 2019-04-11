@@ -20,6 +20,12 @@ let cookie = {
       cb(result);
     });
   },
+  recycleCookie: function(id, cb) {
+    console.log("ID COOKIE: " + id);
+    orm.recycle(id, function(result) {
+      cb(result);
+    });
+  },
   deleteCookie: function(id, cb) {
     console.log("ID COOKIE: " + id);
     orm.delete(id, function(result) {

@@ -3,10 +3,9 @@ $(function() {
   $(".change-crumbled").on("click", function(event) {
     event.preventDefault();
     let id = $(this).data("id");
-    let newCrumbled = $(this).data("newcrumbled");
 
     let newCrumbledState = {
-      crumbled: newCrumbled
+      crumbled: "true"
     };
 
     // send the PUT request
@@ -14,7 +13,24 @@ $(function() {
       type: "PUT",
       data: newCrumbledState
     }).then(function() {
-      console.log("changed crumbled to", newCrumbled);
+      // Reload the page to get the updated list
+      location.reload();
+    });
+  });
+
+  $(".change-recycle").on("click", function(event) {
+    event.preventDefault();
+    let id = $(this).data("id");
+
+    let newCrumbledState = {
+      crumbled: "false"
+    };
+
+    // send the PUT request
+    $.ajax("/api/recycle/" + id, {
+      type: "PUT",
+      data: newCrumbledState
+    }).then(function() {
       // Reload the page to get the updated list
       location.reload();
     });

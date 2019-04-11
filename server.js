@@ -4,7 +4,7 @@ let PORT = process.env.PORT || 6060;
 let app = express();
 
 // server static content for the app from the "public" directory in the application directory
-app.use(express.static(process.cwd() + "/public"));
+app.use(express.static("public"));
 
 // parse request body as JSON
 app.use(express.urlencoded({ extended: true }));

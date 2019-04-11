@@ -1,11 +1,19 @@
 {{!-- changing state from "COOKIES TO EAT" to "COOKIES YOU ATE" --}}
 <li>
     {{name}}
+
+    {{#if crumbled}}
     <button class="change-crumbled" data-id="{{id}}" data-newcrumbled="{{crumbled}}">
-        {{#if crumbled}}EAT ME!<button class="delete-cookie" data-id="{{this.id}}">HIDE THE
-            EVIDENCE!</button>{{else}}YOU ATE ME!{{/if}}
+        EAT ME!
     </button>
 
+    {{else}}
+    <button class="change-recycle" data-id="{{id}}" data-newcrumbled="{{crumbled}}">
+        RECYCLE!
+    </button>
+    {{/if}}
 
+    <button class="delete-cookie" data-id="{{this.id}}">HIDE THE
+        EVIDENCE!</button>
 </li>
 <br>
