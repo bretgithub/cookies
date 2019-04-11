@@ -1,4 +1,4 @@
-## Cookie counter
+## Cookie collector
 
 A simple cookie application utilizing:
 Node.js
